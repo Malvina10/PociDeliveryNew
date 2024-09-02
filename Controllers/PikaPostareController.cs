@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using PociDelivery.Interfaces;
 using PociDelivery.Models;
 using PociDelivery.Repository;
+using PociDelivery.ViewModels;
 
 namespace PociDelivery.Controllers
 {
@@ -36,5 +37,17 @@ namespace PociDelivery.Controllers
             _pikaPostareRepository.Add(pika);
             return RedirectToAction("Index");
         }
+
+        /*public async Task<PikaPostare> ModifikoPikePostare(int id)
+        {
+            var pikaPostare = _pikaPostareRepository.GetByIdAsync(id);
+            if (pikaPostare == null) return View();
+            var pikaVM= new ModifikoPikePostareViewModel
+            {
+               
+            }
+
+            return View(pikaVM); 
+        }*/
     }
 }
