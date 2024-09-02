@@ -1,0 +1,65 @@
+﻿@model Perdoruesi
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post" asp-for="ShtoKlient">
+    <div class="form-group">
+        <label asp-for="Emri">Emri: </label>
+        <input asp-for="Emri" class="form-control" placeholder="Vendosni emrin">
+        <span asp-validation-for="Emri" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Mbiemri">Mbiemri: </label>
+        <input asp-for="Mbiemri" class="form-control" placeholder="Vendosni mbiemrin">
+        <span asp-validation-for="Mbiemri" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Username">Përdoruesi: </label>
+        <input asp-for="Username" class="form-control" placeholder="Vendosni përdoruesin">
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Fjalekalimi">Fjalëkalimi: </label>
+        <input asp-for="Fjalekalimi" class="form-control" placeholder="Vendosni fjalëkalimin">
+        <span asp-validation-for="Fjalekalimi" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Email: </label>
+        <input asp-for="Email" class=" form-control" placeholder="Vendosni email-in">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber">Numër telefoni: </label>
+        <input asp-for="PhoneNumber" class="form-control" placeholder="Vendosni numrin e telefonit">
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Roli i përdoruesit në sistem:</label>
+        <select asp-for="IDRoli" id="IDRoli" name="IDRoli" class="form-control">
+            <option value="">--Zgjidhni rolin--</option>
+            @foreach (var item in ViewBag.RolesSelectList)
+            {
+                if (@item.Text.Contains("Klienti"))
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+
+            }
+        </select>
+        <span asp-validation-for="IDRoli" class="text-danger"></span>
+    </div>
+    <div>
+        <input asp-for="IDPikaPostare" class="form-control" value="" type="hidden" />
+        <span asp-validation-for="IDPikaPostare" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Data:</label>
+        <input asp-for="CreatedOn" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+        <span asp-validation-for="CreatedOn" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Ruaj</button>
+</form>
+

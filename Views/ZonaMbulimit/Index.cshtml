@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ZonaMbulimit>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Lista e zonave të mbulimit</h1>
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            @foreach (var zone in Model)
+            {
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4 class="card-text">@zone.Zona</h4>
+                            <h6 class="card-text">@zone.PikaPostare?.Pikapostare</h6>
+                            @if (@zone.Statusi == 1)
+                            {
+                                <p class="card-text">Hapur</p>
+                            }
+                            else
+                            {
+                                <p class="card-text">Mbyllur</p>
+                            }
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                 @if (@zone.Statusi == 1)
+                                    {
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Mbyll zonë mbulimi</button>
+                                    }
+                                  else
+                                    {
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" hidden>Mbyll zonë mbulimi</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

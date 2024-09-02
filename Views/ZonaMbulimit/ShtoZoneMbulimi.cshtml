@@ -1,0 +1,47 @@
+﻿@model ZonaMbulimit
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form method="post" asp-for="ShtoPikePostare">
+    <div class="form-group">
+        <label asp-for="Zona">Zona e mbulimit: </label>
+        <input asp-for="Zona" class="form-control" placeholder="Vendosni zonën postare">
+        <span asp-validation-for="Zona" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Zgjidhni pikën postare për sportelistin</label>
+        <select asp-for="IDPikaPostare" id="IDPikaPostare" name="IDPikaPostare" class="form-control">
+            <option value="">--Zgjidhni pikën postare--</option>
+            @foreach (var item in ViewBag.PikatSelectList)
+            {
+                <option value="@item.Value">@item.Text</option>
+
+            }
+        </select>
+        <span asp-validation-for="IDPikaPostare" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Statusi i pikës postare</label>
+        <div>
+            <label>
+                <input asp-for="Statusi" type="radio" name="Statusi" value="1" />
+                Hapur
+            </label>
+            <label>
+                <input asp-for="Statusi" type="radio" name="Statusi" value="0" />
+                Mbyllur
+            </label>
+        </div>
+        <span asp-validation-for="Statusi" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Data:</label>
+        <input asp-for="CreatedOn" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+        <span asp-validation-for="CreatedOn" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Ruaj</button>
+</form>

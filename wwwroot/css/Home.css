@@ -1,0 +1,40 @@
+﻿*{
+    margin:0; 
+    padding:0;
+    font-family:sans-serif; 
+}
+
+body{
+    width:100%; 
+    height:100vh; 
+    background-image:linear-gradient(#fff,rgb(255, 255, 255)),url(Images/Logo1.jpg);
+    background-size: cover; 
+    background-position:center; 
+}
+
+.navbar{
+    width: 85%; 
+    margin:auto; 
+    padding:35px 0;
+    display: flex; 
+    align-items:center; 
+    justify-content:space-between;
+}
+
+.logo{
+    width:100%;
+    height:100vh;
+}
+
+.navbar ul li{
+    list-style:none; 
+    display:inline-block;
+    margin: 0 20px;
+
+}
+
+.navbar ul li a{
+text-decoration:none; 
+color: #fff; 
+text-transform:uppercase;
+}
