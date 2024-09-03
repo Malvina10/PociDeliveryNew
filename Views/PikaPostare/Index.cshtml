@@ -27,11 +27,11 @@
                                 <div class="btn-group">
                              @if (@pika.Statusi==1)
                              {
-                                 <button type="button" class="btn btn-sm btn-outline-secondary">Mbyll pikë postare</button>
+                                 <a type="button" class="btn btn-sm btn-outline-secondary" asp-controller="PikaPostare" asp-action="ModifikoPikePostare" asp-route="@pika.IDPikaPostare">Mbyll pikë postare</a>
                              }
                              else
                              {
-                                 <button type="button" class="btn btn-sm btn-outline-secondary" hidden >Mbyll pikë postare</button>      
+                                 <a type="button" class="btn btn-sm btn-outline-secondary" hidden >Mbyll pikë postare</a>      
                              }
 
                                 </div>

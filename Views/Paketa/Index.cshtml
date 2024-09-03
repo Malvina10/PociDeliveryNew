@@ -18,7 +18,7 @@
                             <h6 class="card-text">Destinacioni: @paketa.PikaPostareFund?.Pikapostare</h6>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Shiko detajet</button>
+                                    <a asp-controller="PaketaController" asp-action="Detajet" asp-route="@paketa.IDPaketa" class="btn btn-sm btn-outline-secondary">Shiko detajet</a>s                                 
                                 </div>
                             </div>
                         </div>
