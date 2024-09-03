@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -22,32 +23,30 @@
                         @{
                             if (User.Identity.IsAuthenticated)
                             {
-                                
+
                                 <li class="nav-item">
                                     <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Perdoruesi" asp-action="Index">Përdoruesit</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="PikaPostare" asp-action="Index">Pikat Postare</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="ZonaMbulimit" asp-action="Index">Zona Mbulimi</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="konfigurimeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Konfigurime
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="konfigurimeDropdown">
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="PikaPostare">Pikat Postare</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="ZonaMbulimit">Zona Mbulimi</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="Perdoruesi">Përdorues</a></li>
+                                    </ul>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white" asp-area="" asp-controller="Dergesa" asp-action="Index">Dërgesat</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Perdoruesi" asp-action="ShtoKlient">Klienti</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link text-white" asp-area="" asp-controller="Paketa" asp-action="Index">Paketat</a>
                                 </li>
-                        
+
                                 <li class="nav-item">
                                     <a class="nav-link text-white" asp-area="" asp-controller="Accounts" asp-action="SignOut">SignOut</a>
                                 </li>
@@ -62,51 +61,6 @@
                                 </li>
                             }
                         }
-                    <ul class="nav">
-                        @if (User.IsInRole("Administrator"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Home">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Dergesa">Dërgesat</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Paketat">Paketat</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Konfigurime
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="PikaPostare>Pikat Postare</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-controller="ZonaMbulimit>Zonat e Mbulimit</a></li>
-                                    <li><a class="dropdown-item" href="/Perdorues">Përdoruesit</a></li>
-                                </ul>
-                            </li>
-                        }
-                        else if (User.IsInRole("Transportues"))
-                        {
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Dergesa">Dërgesat</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Paketat">Paketat</a>
-                        </li>
-                        }
-                        else if (User.IsInRole("Klienti"))
-                        {
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Dergesa">Dërgesat</a>
-                        </li>
-                        }
-                        else if (User.IsInRole("Shperndaresi") || User.IsInRole("Sportelisti"))
-                        {
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Dergesa">Dërgesat</a>
-                        </li>
-                        }
-                    </ul>
                 </div>
             </div>
         </nav>

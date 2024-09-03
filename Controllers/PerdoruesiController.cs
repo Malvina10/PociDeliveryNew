@@ -42,17 +42,6 @@ namespace PociDelivery.Controllers
             return View();
         }
 
-        //ShtoKlient View 
-        public async Task<IActionResult> ShtoKlient()
-        {
-            var rolet = await _roliRepository.GetAllRolet();  // Fetch roles via repository
-            ViewBag.RolesSelectList = new SelectList(rolet, "IDRoli", "EmerRoli");
-
-            var pikatPostare = await _pikaPostareRepository.GetAllPikaPostare();  // Fetch postal points via repository
-            ViewBag.PikatSelectList = new SelectList(pikatPostare, "IDPikaPostare", "Pikapostare");
-
-            return View();
-        }
 
         [HttpPost] //ShtoPerdorues
         public async Task<IActionResult> ShtoPerdorues(Perdoruesi perdoruesi)
@@ -72,23 +61,6 @@ namespace PociDelivery.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost] //ShtoKlient()
-        public async Task<IActionResult> ShtoKlient(Perdoruesi klient)
-        {
-            if (!ModelState.IsValid)
-            {
-                var rolet = await _roliRepository.GetAllRolet();
-                ViewBag.RolesSelectList = new SelectList(rolet, "IDRoli", "EmerRoli");
-
-                var pikatPostare = await _pikaPostareRepository.GetAllPikaPostare();
-                ViewBag.PikatSelectList = new SelectList(pikatPostare, "IDPikaPostare", "Pikapostare");
-
-                return View(klient);
-            }
-
-            _perdoruesiRepository.Add(klient);
-            return RedirectToAction("Index");
-        }
 
         //view per te shikuar detajet e nje perdoruesi 
         public async Task<IActionResult> DetajetPerdorues(int id)
