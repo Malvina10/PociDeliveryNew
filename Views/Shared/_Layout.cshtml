@@ -24,29 +24,58 @@
                             if (User.Identity.IsAuthenticated)
                             {
 
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="konfigurimeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Konfigurime
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="konfigurimeDropdown">
-                                        <li><a class="dropdown-item" asp-area="" asp-controller="PikaPostare">Pikat Postare</a></li>
-                                        <li><a class="dropdown-item" asp-area="" asp-controller="ZonaMbulimit">Zona Mbulimi</a></li>
-                                        <li><a class="dropdown-item" asp-area="" asp-controller="Perdoruesi">Përdorues</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Dergesa" asp-action="Index">Dërgesat</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Paketa" asp-action="Index">Paketat</a>
-                                </li>
+                                <!-- Role-based Menu Items -->
+                                @if (User.IsInRole("Transportuesi"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Dergesa" asp-action="Index">Dërgesat</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Paketa" asp-action="Index">Paketat</a>
+                                    </li>
+                                }
 
+                                @if (User.IsInRole("Klienti"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Dergesa" asp-action="Index">Dërgesat</a>
+                                    </li>
+                                }
+
+                                @if (User.IsInRole("Administratori"))
+                                {
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="konfigurimeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Konfigurime
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="konfigurimeDropdown">
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="PikaPostare">Pikat Postare</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ZonaMbulimit">Zona Mbulimi</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Perdoruesi">Përdorues</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Dergesa" asp-action="Index">Dërgesat</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Paketa" asp-action="Index">Paketat</a>
+                                    </li>
+                                    
+                                }
+
+                                @if (User.IsInRole("Shperndaresi"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Dergesa" asp-action="Index">Dërgesat</a>
+                                    </li>
+                                }
+
+                                @if (User.IsInRole("Sporteli"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link"asp-area="" asp-controller="Dergesa" asp-action="Index">Dërgesat</a>
+                                    </li>
+                                }
                                 <li class="nav-item">
                                     <a class="nav-link text-white" asp-area="" asp-controller="Accounts" asp-action="SignOut">SignOut</a>
                                 </li>

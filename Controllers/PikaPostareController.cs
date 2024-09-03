@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PociDelivery.Interfaces;
 using PociDelivery.Models;
 using PociDelivery.Repository;
 using PociDelivery.ViewModels;
+using System.Data;
 
 namespace PociDelivery.Controllers
 {
@@ -14,12 +16,15 @@ namespace PociDelivery.Controllers
         {
             _pikaPostareRepository = pikaPostareRepository;
         }
+
+        [Authorize(Roles = "Administratori")]
         public async Task<IActionResult> Index()
         {
             IEnumerable<PikaPostare> pikaPostare = await _pikaPostareRepository.GetAllPikaPostare();
             return View(pikaPostare);
         }
 
+        [Authorize(Roles = "Administratori")]
         public IActionResult ShtoPikePostare()
         {
             return View();

@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PociDelivery.Interfaces;
 using PociDelivery.Models;
 using PociDelivery.Repository;
+using System.Data;
 
 namespace PociDelivery.Controllers
 {
@@ -15,12 +17,16 @@ namespace PociDelivery.Controllers
             _zonaMbulimitRepository = zonaMbulimitRepository;
             _pikaPostareRepository = pikaPostareRepository;
         }
+
+        [Authorize(Roles = "Administratori")]
         public async Task<IActionResult> Index()
         {
             IEnumerable<ZonaMbulimit> zonaMbulimi = await _zonaMbulimitRepository.GetAllZonaMbulimi();
             return View(zonaMbulimi);
         }
 
+
+        [Authorize(Roles = "Administratori")]
         public async Task<IActionResult> ShtoZoneMbulimi()
         {
             var pikatPostare = await _pikaPostareRepository.GetAllPikaPostare();  // Fetch postal points via repository
@@ -29,7 +35,6 @@ namespace PociDelivery.Controllers
         }
 
         [HttpPost]
-
         public async Task<IActionResult> ShtoZoneMbulimi(ZonaMbulimit zonambulimit)
         {
             if (!ModelState.IsValid)

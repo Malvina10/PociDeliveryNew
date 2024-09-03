@@ -7,6 +7,7 @@ using PociDelivery.ViewModels;
 using System.Security.Claims;
 using PociDelivery.Interfaces;
 using PociDelivery.Repository;
+using System.Data;
 
 namespace PociDelivery.Controllers
 {
@@ -40,10 +41,18 @@ namespace PociDelivery.Controllers
 
             if (user != null)
             {
+
+                //merr rolet e perdoruesit 
+                var roleName = _context.Rolet
+            .Where(r => r.IDRoli == user.IDRoli)
+            .Select(r => r.EmerRoli)
+            .FirstOrDefault();
+
                 // Create claims for the user
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, user.Email)
+                    new Claim(ClaimTypes.Name, user.Email),
+                    new Claim(ClaimTypes.Role, roleName)
                 };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
