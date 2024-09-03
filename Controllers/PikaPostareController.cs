@@ -38,16 +38,11 @@ namespace PociDelivery.Controllers
             return RedirectToAction("Index");
         }
 
-        /*public async Task<PikaPostare> ModifikoPikePostare(int id)
+     //view per mbylljen e nje pike postare 
+     public async Task<IActionResult> ModifikoPikePostare(int id)
         {
-            var pikaPostare = _pikaPostareRepository.GetByIdAsync(id);
-            if (pikaPostare == null) return View();
-            var pikaVM= new ModifikoPikePostareViewModel
-            {
-               
-            }
-
-            return View(pikaVM); 
-        }*/
+            return  View();
+        }
+   
     }
 }

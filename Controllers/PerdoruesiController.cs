@@ -35,10 +35,10 @@ namespace PociDelivery.Controllers
         //ShtoPerdorues View 
         public async Task<IActionResult> ShtoPerdorues()
         {
-            var rolet = await _roliRepository.GetAllRolet();  // Fetch roles via repository
+            var rolet = await _roliRepository.GetAllRolet();  // merr rolet
             ViewBag.RolesSelectList = new SelectList(rolet, "IDRoli", "EmerRoli");
 
-            var pikatPostare = await _pikaPostareRepository.GetAllPikaPostare();  // Fetch postal points via repository
+            var pikatPostare = await _pikaPostareRepository.GetAllPikaPostare();  // merr pikat postare
             ViewBag.PikatSelectList = new SelectList(pikatPostare, "IDPikaPostare", "Pikapostare");
 
             return View();
@@ -90,6 +90,12 @@ namespace PociDelivery.Controllers
 
             _perdoruesiRepository.Add(klient);
             return RedirectToAction("Index");
+        }
+
+        //view per te shikuar detajet e nje perdoruesi 
+        public async Task<IActionResult> DetajetPerdorues(int id)
+        {
+            return View();
         }
     }
 }
