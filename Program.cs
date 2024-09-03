@@ -1,9 +1,17 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using PociDelivery.Data;
 using PociDelivery.Interfaces;
 using PociDelivery.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+        {
+            options.LoginPath = "/Accounts/Login";
+            options.LogoutPath = "/Accounts/SignOut";
+        });
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -40,11 +48,29 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+// Add custom middleware to redirect unauthenticated users to the login page
+app.Use(async (context, next) =>
+{
+    if (!context.User.Identity.IsAuthenticated &&
+        !context.Request.Path.StartsWithSegments("/Accounts/Login") &&
+        !context.Request.Path.StartsWithSegments("/Accounts/SignUp"))
+    {
+        context.Response.Redirect("/Accounts/Login");
+    }
+    else
+    {
+        await next.Invoke();
+    }
+});
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
 app.Run();

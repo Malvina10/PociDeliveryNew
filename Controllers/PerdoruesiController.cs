@@ -28,8 +28,6 @@ namespace PociDelivery.Controllers
             IEnumerable<Perdoruesi> perdoruesi = await _perdoruesiRepository.GetAllPerdoruesit();
 
             return View(perdoruesi);
-
-
         }
 
         //ShtoPerdorues View 
