@@ -42,5 +42,11 @@ namespace PociDelivery.Controllers
             _zonaMbulimitRepository.Add(zonambulimit);
             return RedirectToAction("Index");
         }
+
+        //view per mbylljen e zones se mbulimit 
+        public async Task<IActionResult> ModifikoZoneMbulimi(int Id)
+        {
+            return View();
+        }
     }
 }

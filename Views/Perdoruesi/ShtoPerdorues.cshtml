@@ -5,75 +5,84 @@
 *@
 @{
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    //@Html.DropDownListFor(model => model.Rolet, ViewBag.RolesSelectList as SelectList, "--Zgjidhni rolin--")
-   //var rolesSelectList = ViewBag.RolesSelectList as SelectList;
 }
-<form method="post" asp-for="ShtoPerdorues">
-  <div class="form-group">
-     <label asp-for="Emri">Emri: </label>
-      <input asp-for="Emri" class="form-control"  placeholder="Vendosni emrin">
-      <span asp-validation-for="Emri" class="text-danger"></span>
-  </div>
-  <div class="form-group">
-        <label asp-for="Mbiemri">Mbiemri: </label>
-        <input asp-for="Mbiemri" class="form-control" placeholder="Vendosni mbiemrin">
-        <span asp-validation-for="Mbiemri" class="text-danger"></span>
-  </div>
-   <div class="form-group">
-     <label asp-for="Username">Përdoruesi: </label>
-      <input asp-for="Username" class="form-control" placeholder="Vendosni përdoruesin">
-      <span asp-validation-for="Username" class="text-danger"></span>
-  </div>
-   <div class="form-group">
-    <label asp-for="Fjalekalimi">Fjalëkalimi: </label>
-    <input asp-for="Fjalekalimi" class="form-control" placeholder="Vendosni fjalëkalimin">
-    <span asp-validation-for="Fjalekalimi" class="text-danger"></span>
-  </div>
-  <div class="form-group">
-    <label asp-for="Email">Email: </label>
-    <input asp-for="Email" class=" form-control" placeholder="Vendosni email-in">
-    <span asp-validation-for="Email" class="text-danger"></span>
-  </div>
-  <div class="form-group">
-     <label asp-for="PhoneNumber">Numër telefoni: </label>
-     <input asp-for ="PhoneNumber" class="form-control" placeholder="Vendosni numrin e telefonit">
-     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-   </div>
-   <div class="form-group">
-        <label>Roli i përdoruesit në sistem:</label>
-        <select asp-for="IDRoli" id="IDRoli" name="IDRoli" class="form-control">
-             <option value="">--Zgjidhni rolin--</option>
-            @foreach (var item in ViewBag.RolesSelectList)
-             {
-                if (!(@item.Text.Contains("Administratori") || @item.Text.Contains("Klienti")))
-                {
-                    <option value="@item.Value">@item.Text</option>
-               }
 
-            }
-        </select> 
-        <span asp-validation-for="IDRoli" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label>Zgjidhni pikën postare për sportelistin</label>
-        <select asp-for="IDPikaPostare" id="IDPikaPostare" name="IDPikaPostare" class="form-control">
-            <option value="">--Zgjidhni pikën postare--</option>
-            @foreach (var item in ViewBag.PikatSelectList)
-            {
-                <option value="@item.Value">@item.Text</option>
+<h1 class="text-center mb-4">Shto Përdorues</h1>
 
-            }
-        </select>
-        <span asp-validation-for="IDPikaPostare" class="text-danger"></span>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5">
+                    <form method="post" asp-for="ShtoPerdorues">
+                        <div class="mb-3">
+                            <label asp-for="Emri" class="form-label">Emri:</label>
+                            <input asp-for="Emri" class="form-control" placeholder="Vendosni emrin">
+                            <span asp-validation-for="Emri" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Mbiemri" class="form-label">Mbiemri:</label>
+                            <input asp-for="Mbiemri" class="form-control" placeholder="Vendosni mbiemrin">
+                            <span asp-validation-for="Mbiemri" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Username" class="form-label">Përdoruesi:</label>
+                            <input asp-for="Username" class="form-control" placeholder="Vendosni përdoruesin">
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Fjalekalimi" class="form-label">Fjalëkalimi:</label>
+                            <input asp-for="Fjalekalimi" class="form-control" placeholder="Vendosni fjalëkalimin" type="password">
+                            <span asp-validation-for="Fjalekalimi" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">Email:</label>
+                            <input asp-for="Email" class="form-control" placeholder="Vendosni email-in" type="email">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="PhoneNumber" class="form-label">Numër telefoni:</label>
+                            <input asp-for="PhoneNumber" class="form-control" placeholder="Vendosni numrin e telefonit">
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Roli i përdoruesit në sistem:</label>
+                            <select asp-for="IDRoli" id="IDRoli" name="IDRoli" class="form-select">
+                                <option value="">--Zgjidhni rolin--</option>
+                                @foreach (var item in ViewBag.RolesSelectList)
+                                {
+                                    if (!(@item.Text.Contains("Administratori") || @item.Text.Contains("Klienti")))
+                                    {
+                                        <option value="@item.Value">@item.Text</option>
+                                    }
+                                }
+                            </select>
+                            <span asp-validation-for="IDRoli" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Zgjidhni pikën postare për sportelistin:</label>
+                            <select asp-for="IDPikaPostare" id="IDPikaPostare" name="IDPikaPostare" class="form-select">
+                                <option value="">--Zgjidhni pikën postare--</option>
+                                @foreach (var item in ViewBag.PikatSelectList)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                            <span asp-validation-for="IDPikaPostare" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Data:</label>
+                            <input asp-for="CreatedOn" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")">
+                            <span asp-validation-for="CreatedOn" class="text-danger"></span>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Ruaj</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Data:</label>
-        <input asp-for="CreatedOn" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-        <span asp-validation-for="CreatedOn" class="text-danger"></span>
-    </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Ruaj</button>
-</form>
+</div>

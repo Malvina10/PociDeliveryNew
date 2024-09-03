@@ -4,35 +4,36 @@
 *@
 @{
 }
+<h1 class="text-left mb-4">Zonat e Mbulimit</h1>
 
-<h1>Lista e zonave të mbulimit</h1>
-<div class="album py-5 bg-body-tertiary">
+<div class="album py-5 bg-light">
     <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
             @foreach (var zone in Model)
             {
                 <div class="col">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h4 class="card-text">@zone.Zona</h4>
-                            <h6 class="card-text">@zone.PikaPostare?.Pikapostare</h6>
+                    <div class="card shadow-lg h-100 border-0">
+                        <div class="card-body p-4">
+                            <h4 class="card-title text-primary">@zone.Zona</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">@zone.PikaPostare?.Pikapostare</h6>
                             @if (@zone.Statusi == 1)
                             {
-                                <p class="card-text">Hapur</p>
+                                <p class="card-text text-success">Hapur</p>
                             }
                             else
                             {
-                                <p class="card-text">Mbyllur</p>
+                                <p class="card-text text-danger">Mbyllur</p>
                             }
+                            <hr>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                 @if (@zone.Statusi == 1)
+                                    @if (@zone.Statusi == 1)
                                     {
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Mbyll zonë mbulimi</button>
+                                        <a asp-controller="ZonaMbulimit" asp-action="ModifikoZoneMbulimi" class="btn btn-sm btn-primary">Mbyll zonë mbulimi</a>
                                     }
-                                  else
+                                    else
                                     {
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" hidden>Mbyll zonë mbulimi</button>
+                                        <a asp-controller="ZonaMbulimit" asp-action="ModifikoZoneMbulimi" class="btn btn-sm btn-secondary" disabled>Mbyll zonë mbulimi</a>
                                     }
                                 </div>
                             </div>
@@ -40,7 +41,6 @@
                     </div>
                 </div>
             }
-
         </div>
     </div>
 </div>

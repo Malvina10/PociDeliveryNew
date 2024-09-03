@@ -126,8 +126,8 @@ namespace PociDelivery.Controllers
         //do te shfaqet view Detajet 
         public async Task<IActionResult> Detajet(int id)
         {
-            var paketa= await _paketaRepository.GetBGyIdAsync(id);
-            return View(paketa);
+            //var paketa= await _paketaRepository.GetBGyIdAsync(id);
+            return View();
         }
 
     }

@@ -147,5 +147,10 @@ namespace PociDelivery.Controllers
             return View(dergesa);
 
         }
+
+        public async Task<IActionResult> DetajetDergesa(int id)
+        {
+            return View();
+        }
     }
 }

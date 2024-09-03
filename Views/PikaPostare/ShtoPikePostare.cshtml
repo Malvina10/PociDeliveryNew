@@ -6,37 +6,45 @@
 }
 
 
-<form method="post" asp-for="ShtoPikePostare">
-    <div class="form-group">
-        <label asp-for="Pikapostare">Pika Postare: </label>
-        <input asp-for="Pikapostare" class="form-control" placeholder="Vendosni pikën postare">
-        <span asp-validation-for="Pikapostare" class="text-danger"></span>
+<h1 class="text-center mb-4">Shto Pikë Postare</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5">
+                    <form method="post" asp-for="ShtoPikePostare">
+                        <div class="mb-3">
+                            <label asp-for="Pikapostare" class="form-label">Pika Postare:</label>
+                            <input asp-for="Pikapostare" class="form-control" placeholder="Vendosni pikën postare">
+                            <span asp-validation-for="Pikapostare" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Vendndodhja" class="form-label">Adresa:</label>
+                            <input asp-for="Vendndodhja" class="form-control" placeholder="Vendosni adresën">
+                            <span asp-validation-for="Vendndodhja" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Statusi i pikës postare:</label>
+                            <div class="form-check">
+                                <input asp-for="Statusi" type="radio" class="form-check-input" id="statusHapur" value="1" />
+                                <label class="form-check-label" for="statusHapur">Hapur</label>
+                            </div>
+                            <div class="form-check">
+                                <input asp-for="Statusi" type="radio" class="form-check-input" id="statusMbyllur" value="0" />
+                                <label class="form-check-label" for="statusMbyllur">Mbyllur</label>
+                            </div>
+                            <span asp-validation-for="Statusi" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Data:</label>
+                            <input asp-for="CreatedOn" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")">
+                            <span asp-validation-for="CreatedOn" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Ruaj</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Vendndodhja">Adresa: </label>
-        <input asp-for="Vendndodhja" class="form-control" placeholder="Vendosni adresën">
-        <span asp-validation-for="Vendndodhja" class="text-danger"></span>
-    </div>
-    <br/>
-    <div class="form-group">
-         <label>Statusi i pikës postare</label>
-         <div>
-                <label>
-                    <input asp-for="Statusi" type="radio" name="Statusi" value="1" />
-                    Hapur
-                </label>
-                <label>
-                    <input asp-for="Statusi" type="radio" name="Statusi" value="0" />
-                    Mbyllur
-                </label>
-         </div>
-         <span asp-validation-for="Statusi" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label>Data:</label>
-        <input asp-for="CreatedOn" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-        <span asp-validation-for="CreatedOn" class="text-danger"></span>
-    </div>
-   <br/>
-    <button type="submit" class="btn btn-primary">Ruaj</button>
-</form>
+</div>

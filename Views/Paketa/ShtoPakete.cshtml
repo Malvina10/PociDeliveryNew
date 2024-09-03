@@ -5,62 +5,72 @@
 @{
 }
 
-<form method="post" asp-for="ShtoDergese">
-    <div class="form-group">
-        <label asp-for="Barcode">Barcode: </label>
-        <input type="text" id="Barcode" name="Barcode" class="form-control" value="@ViewBag.GeneratedBarcode" readonly />
-        <span asp-validation-for="Barcode" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label>Zgjidhni klientin:</label>
-        <select asp-for="IDTransportuesi" id="IDTransportuesi" name="IDTransportuesi" class="form-control">
-            <option value="">Transportuesi--</option>
-            @foreach (var item in ViewBag.TransportuesiSelectList)
-            {               
-                    <option value="@item.Value">@item.Text</option>
-            }
-        </select>
-        <span asp-validation-for="IDTransportuesi" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label>Statusi i dërgesës: </label>
-        <select asp-for="StatusiPaketa" id="StatusiPaketa" name="StatusiPaketa" class="form-control">
-            <option value="">--Zgjidhni statusin--</option>
-            @foreach (var item in ViewBag.StatusetSelectList)
-            {
-                <option value="@item.Value">@item.Text</option>
-            }
-        </select>
-        <span asp-validation-for="StatusiPaketa" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label>Zgjidhni pikën postare të fillimit</label>
-        <select asp-for="IDPikaPostareFillim" id="IDPikaPostareFillim" name="IDPikaPostareFillim" class="form-control">
-            <option value="">--Zgjidhni pikën postare të fillimit--</option>
-            @foreach (var item in ViewBag.PikatSelectList)
-            {
-                <option value="@item.Value">@item.Text</option>
+<h1 class="text-center mb-4">Shto Paketë</h1>
 
-            }
-        </select>
-        <span asp-validation-for="IDPikaPostareFillim" class="text-danger"></span>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5">
+                    <form method="post" asp-for="ShtoDergese">
+                        <div class="mb-3">
+                            <label asp-for="Barcode" class="form-label">Barcode:</label>
+                            <input type="text" id="Barcode" name="Barcode" class="form-control" value="@ViewBag.GeneratedBarcode" readonly />
+                            <span asp-validation-for="Barcode" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Zgjidhni Transportuesin:</label>
+                            <select asp-for="IDTransportuesi" id="IDTransportuesi" name="IDTransportuesi" class="form-select">
+                                <option value="">--Zgjidhni Transportuesin--</option>
+                                @foreach (var item in ViewBag.TransportuesiSelectList)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                            <span asp-validation-for="IDTransportuesi" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Statusi i Paketës:</label>
+                            <select asp-for="StatusiPaketa" id="StatusiPaketa" name="StatusiPaketa" class="form-select">
+                                <option value="">--Zgjidhni Statusin--</option>
+                                @foreach (var item in ViewBag.StatusetSelectList)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                            <span asp-validation-for="StatusiPaketa" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Zgjidhni Pikën Postare të Fillimit:</label>
+                            <select asp-for="IDPikaPostareFillim" id="IDPikaPostareFillim" name="IDPikaPostareFillim" class="form-select">
+                                <option value="">--Zgjidhni Pikën Postare të Fillimit--</option>
+                                @foreach (var item in ViewBag.PikatSelectList)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                            <span asp-validation-for="IDPikaPostareFillim" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Zgjidhni Pikën Postare përfundimtare:</label>
+                            <select asp-for="IDPikaPostareFund" id="IDPikaPostareFund" name="IDPikaPostareFund" class="form-select">
+                                <option value="">--Zgjidhni Pikën Postare Përfundimtare--</option>
+                                @foreach (var item in ViewBag.PikatSelectList)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                            <span asp-validation-for="IDPikaPostareFund" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Data:</label>
+                            <input asp-for="CreatedOn" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                            <span asp-validation-for="CreatedOn" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Ruaj</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Zgjidhni pikën postare të fillimit</label>
-        <select asp-for="IDPikaPostareFund" id="IDPikaPostareFund" name="IDPikaPostareFund" class="form-control">
-            <option value="">--Zgjidhni pikën postare përfundimtare--</option>
-            @foreach (var item in ViewBag.PikatSelectList)
-            {
-                <option value="@item.Value">@item.Text</option>
-
-            }
-        </select>
-        <span asp-validation-for="IDPikaPostareFund" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label>Data:</label>
-        <input asp-for="CreatedOn" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-        <span asp-validation-for="CreatedOn" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Ruaj</button>
-</form>
+</div>

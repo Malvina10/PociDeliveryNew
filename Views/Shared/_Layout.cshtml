@@ -62,6 +62,50 @@
                                 </li>
                             }
                         }
+                    <ul class="nav">
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Dergesa">Dërgesat</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Paketat">Paketat</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Konfigurime
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="PikaPostare>Pikat Postare</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="ZonaMbulimit>Zonat e Mbulimit</a></li>
+                                    <li><a class="dropdown-item" href="/Perdorues">Përdoruesit</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else if (User.IsInRole("Transportues"))
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Dergesa">Dërgesat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Paketat">Paketat</a>
+                        </li>
+                        }
+                        else if (User.IsInRole("Klienti"))
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Dergesa">Dërgesat</a>
+                        </li>
+                        }
+                        else if (User.IsInRole("Shperndaresi") || User.IsInRole("Sportelisti"))
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Dergesa">Dërgesat</a>
+                        </li>
+                        }
                     </ul>
                 </div>
             </div>

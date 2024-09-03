@@ -5,86 +5,97 @@
 @{
 }
 
-<form method="post" asp-for="ShtoDergese">
-    <div class="form-group">
-        <label asp-for="Barcode">Barcode: </label>
-        <input type="text" id="Barcode" name="Barcode" class="form-control" value="@ViewBag.GeneratedBarcode" readonly />
-        <span asp-validation-for="Barcode" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="EmriMarresit">Emri i marrësit: </label>
-        <input asp-for="EmriMarresit" class="form-control" placeholder="Vendosni emrin e marrësit">
-        <span asp-validation-for="EmriMarresit" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="MbiemriMarresit">Mbiemri i marrësit: </label>
-        <input asp-for="MbiemriMarresit" class="form-control" placeholder="Vendosni mbiemrin e marrësit ">
-        <span asp-validation-for="MbiemriMarresit" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="AdresaMarresit">Adresa e marrësit: </label>
-        <input asp-for="AdresaMarresit" class="form-control" placeholder="Vendosni adresën e marrësit">
-        <span asp-validation-for="AdresaMarresit" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="NumerTelefoni">Numër telefoni: </label>
-        <input asp-for="NumerTelefoni" class="form-control" placeholder="Vendosni numrin e telefonit">
-        <span asp-validation-for="NumerTelefoni" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Cmimi">Cmimi: </label>
-        <input asp-for="Cmimi" class="form-control" placeholder="Vendosni cmimin">
-        <span asp-validation-for="Cmimi" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label>Zgjidhni klientin:</label>
-        <select asp-for="IDKlienti" id="IDKlienti" name="IDKlienti" class="form-control">
-            <option value="">--Zgjidhni klientin--</option>
-            @foreach (var item in ViewBag.KlientiSelectList)
-            {               
-                    <option value="@item.Value">@item.Text</option>
-            }
-        </select>
-        <span asp-validation-for="IDKlienti" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label>Sporteli:</label>
-        <select asp-for="IDSportelisti" id="IDSportelisti" name="IDSportelisti" class="form-control">
-            <option value="">--Zgjidhni sportelistin--</option>
-            @foreach (var item in ViewBag.SportelistiSelectList)
-            {               
-                    <option value="@item.Value">@item.Text</option>
-            }
-        </select>
-        <span asp-validation-for="IDSportelisti" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label>Statusi i dërgesës: </label>
-        <select asp-for="StatusiDergesa" id="IDStatusi" name="Statusi" class="form-control">
-            <option value="">--Zgjidhni statusin--</option>
-            @foreach (var item in ViewBag.StatusetSelectList)
-            {
-                <option value="@item.Value">@item.Text</option>
-            }
-        </select>
-        <span asp-validation-for="StatusiDergesa" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label>Zgjidhni pikën postare për sportelistin</label>
-        <select asp-for="IDPikaPostare" id="IDPikaPostare" name="IDPikaPostare" class="form-control">
-            <option value="">--Zgjidhni pikën postare--</option>
-            @foreach (var item in ViewBag.PikatSelectList)
-            {
-                <option value="@item.Value">@item.Text</option>
+<h1 class="text-center mb-4">Shto Dërgesë</h1>
 
-            }
-        </select>
-        <span asp-validation-for="IDPikaPostare" class="text-danger"></span>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-body p-5">
+                    <form method="post" asp-for="ShtoDergese">
+                        <div class="mb-3">
+                            <label asp-for="Barcode" class="form-label">Barcode:</label>
+                            <input type="text" id="Barcode" name="Barcode" class="form-control" value="@ViewBag.GeneratedBarcode" readonly />
+                            <span asp-validation-for="Barcode" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="EmriMarresit" class="form-label">Emri i marrësit:</label>
+                            <input asp-for="EmriMarresit" class="form-control" placeholder="Vendosni emrin e marrësit">
+                            <span asp-validation-for="EmriMarresit" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="MbiemriMarresit" class="form-label">Mbiemri i marrësit:</label>
+                            <input asp-for="MbiemriMarresit" class="form-control" placeholder="Vendosni mbiemrin e marrësit">
+                            <span asp-validation-for="MbiemriMarresit" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="AdresaMarresit" class="form-label">Adresa e marrësit:</label>
+                            <input asp-for="AdresaMarresit" class="form-control" placeholder="Vendosni adresën e marrësit">
+                            <span asp-validation-for="AdresaMarresit" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="NumerTelefoni" class="form-label">Numër telefoni:</label>
+                            <input asp-for="NumerTelefoni" class="form-control" placeholder="Vendosni numrin e telefonit">
+                            <span asp-validation-for="NumerTelefoni" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Cmimi" class="form-label">Cmimi:</label>
+                            <input asp-for="Cmimi" class="form-control" placeholder="Vendosni cmimin">
+                            <span asp-validation-for="Cmimi" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Zgjidhni klientin:</label>
+                            <select asp-for="IDKlienti" id="IDKlienti" name="IDKlienti" class="form-select">
+                                <option value="">--Zgjidhni klientin--</option>
+                                @foreach (var item in ViewBag.KlientiSelectList)
+                                {
+                                        <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                            <span asp-validation-for="IDKlienti" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Sporteli:</label>
+                            <select asp-for="IDSportelisti" id="IDSportelisti" name="IDSportelisti" class="form-select">
+                                <option value="">--Zgjidhni sportelistin--</option>
+                                @foreach (var item in ViewBag.SportelistiSelectList)
+                                {
+                                        <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                            <span asp-validation-for="IDSportelisti" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Statusi i dërgesës:</label>
+                            <select asp-for="StatusiDergesa" id="IDStatusi" name="Statusi" class="form-select">
+                                <option value="">--Zgjidhni statusin--</option>
+                                @foreach (var item in ViewBag.StatusetSelectList)
+                                {
+                                        <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                            <span asp-validation-for="StatusiDergesa" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Zgjidhni pikën postare për sportelistin:</label>
+                            <select asp-for="IDPikaPostare" id="IDPikaPostare" name="IDPikaPostare" class="form-select">
+                                <option value="">--Zgjidhni pikën postare--</option>
+                                @foreach (var item in ViewBag.PikatSelectList)
+                                {
+                                        <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                            <span asp-validation-for="IDPikaPostare" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label>Data:</label>
+                            <input asp-for="CreatedOn" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                            <span asp-validation-for="CreatedOn" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Ruaj</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Data:</label>
-        <input asp-for="CreatedOn" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-        <span asp-validation-for="CreatedOn" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Ruaj</button>
-</form>
+</div>
