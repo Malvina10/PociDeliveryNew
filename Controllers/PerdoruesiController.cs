@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PociDelivery.Data;
 using PociDelivery.Interfaces;
 using PociDelivery.Models;
+using PociDelivery.ViewModels;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
@@ -70,6 +72,37 @@ namespace PociDelivery.Controllers
 
         //view per te shikuar detajet e nje perdoruesi 
         public async Task<IActionResult> DetajetPerdorues(int id)
+        {
+            var perdoruesi = await _perdoruesiRepository.GetByIdAsync(id);
+            if (perdoruesi == null) return View();
+            var perdoruesiVM = new PerdoruesitViewModel
+            {
+                IDPerdoruesi = perdoruesi.IDPerdoruesi,
+                Emri = perdoruesi.Emri,
+                Mbiemri = perdoruesi.Mbiemri,
+                Username = perdoruesi.Username,
+                Fjalekalimi = perdoruesi.Fjalekalimi,
+                Email = perdoruesi.Email,
+                PhoneNumber = perdoruesi.PhoneNumber,
+                IDRoli = perdoruesi.IDRoli,
+                Roli = perdoruesi.Roli,
+                IDPikaPostare = perdoruesi.IDPikaPostare,
+                PikaPostare = perdoruesi.PikaPostare,
+                CreatedOn = perdoruesi.CreatedOn,
+                Sportelist = perdoruesi.Sportelist,
+                Klient= perdoruesi.Klient,
+                Paketat = perdoruesi.Paketat,
+                Reportet = perdoruesi.Reportet
+
+            };
+            ViewBag.RolesSelectList = _roliRepository.GetAllRolet();
+            ViewBag.PikatSelectList = _pikaPostareRepository.GetAllPikaPostare();
+            return View(perdoruesiVM);
+        }
+
+        //marrja e te dhenave pas modifikimeve dhe ruajtja 
+        [HttpPost]
+        public async Task<IActionResult> DetajetPerdorues(int Id, PerdoruesitViewModel perdoruesVM)
         {
             return View();
         }

@@ -20,7 +20,7 @@
                             <hr>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a asp-controller="Perdoruesi" asp-action="DetajetPerdorues" class="btn btn-sm btn-primary">Detajet</a>
+                                    <a asp-controller="Perdoruesi" asp-action="DetajetPerdorues" asp-route-id="@perdorues.IDPerdoruesi" class="btn btn-sm btn-primary">Detajet</a>
                                 </div>
                                 <span class="badge bg-secondary">@perdorues.Roli?.EmerRoli</span>
                             </div>

@@ -35,7 +35,7 @@ namespace PociDelivery.Repository
 
         public async Task<Perdoruesi> GetByIdAsync(int id)
         {
-            return await _context.Perdoruesit.FirstOrDefaultAsync();
+            return await _context.Perdoruesit.FirstOrDefaultAsync(i => i.IDPerdoruesi==id);
         }
 
         public async Task<IEnumerable<Perdoruesi>> GetPerdoruesiByUsername(string username, string password)
